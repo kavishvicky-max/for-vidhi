@@ -1,1 +1,270 @@
-# for-vidhi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Vidhi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&family=Parisienne&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff4d6d;
+            --secondary-color: #ff8fa3;
+            --bg-color: #fff0f3;
+            --text-color: #590d22;
+            --parchment: #fcf5e5;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* Floating Hearts Animation */
+        .hearts-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -100px;
+            background-color: var(--secondary-color);
+            display: inline-block;
+            height: 30px; width: 30px;
+            transform: rotate(-45deg);
+            animation: float 6s ease-in infinite;
+            opacity: 0.6;
+        }
+
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 30px; height: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+        }
+        .heart::before { top: -15px; left: 0; }
+        .heart::after { left: 15px; top: 0; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(-45deg) scale(1); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(-45deg) scale(1.2); opacity: 0; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hidden { display: none !important; }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Square Option Cards */
+        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+        .square-card {
+            width: 160px; height: 160px;
+            background: var(--primary-color);
+            color: white; border: none; border-radius: 20px;
+            cursor: pointer; transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 15px; box-shadow: 0 8px 15px rgba(255, 77, 109, 0.3);
+            font-weight: bold;
+        }
+
+        .square-card:hover { transform: translateY(-10px); background-color: #d90429; }
+        .icon { font-size: 3rem; }
+
+        .secondary-btn {
+            margin-top: 30px; padding: 10px 25px;
+            background: white; color: var(--primary-color);
+            border: 2px solid var(--primary-color); border-radius: 50px;
+            font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+
+        /* Romantic Letter/Input Styles */
+        .letter-bg { background: radial-gradient(circle, #fff0f3 0%, #ffccd5 100%); width: 100%; }
+
+        .parchment {
+            background: var(--parchment);
+            width: 90%; max-width: 550px; padding: 40px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 0 100px rgba(220, 180, 150, 0.3);
+            border: 1px solid #d3c4a8; border-radius: 2px; margin-top: 20px;
+        }
+
+        .paper-content {
+            font-family: 'Parisienne', cursive; font-size: 1.8rem;
+            color: #4a3728; line-height: 1.6; text-align: left;
+        }
+
+        .vidhi-input {
+            width: 100%; height: 200px;
+            background: transparent; border: none;
+            font-family: 'Parisienne', cursive; font-size: 1.8rem;
+            color: #4a3728; outline: none; resize: none;
+            border-bottom: 1px dashed var(--secondary-color);
+        }
+
+        .whatsapp-btn {
+            background: #25D366; color: white; border: none;
+            padding: 12px 25px; border-radius: 50px;
+            font-weight: bold; cursor: pointer; margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover { background: #128C7E; }
+
+        /* Gallery Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px; width: 100%; margin-top: 30px;
+        }
+
+        .photo-card {
+            background: white; padding: 12px; border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s;
+        }
+        
+        .photo-card:nth-child(1) { transform: rotate(-3deg); }
+        .photo-card:nth-child(2) { transform: rotate(2deg); }
+        .photo-card:nth-child(3) { transform: rotate(-1deg); }
+
+        .photo-card:hover { transform: rotate(0deg) scale(1.05); z-index: 5; }
+
+        .photo-card img { width: 100%; border-radius: 5px; height: 300px; object-fit: cover; }
+        .photo-caption { margin-top: 10px; font-weight: bold; color: var(--primary-color); font-family: 'Parisienne', cursive; font-size: 1.4rem; }
+
+    </style>
+</head>
+<body>
+
+    <div class="hearts-bg" id="hearts-container"></div>
+
+    <div id="home-section" class="container">
+        <h1>Happy Valentine's Day,<br>Vidhi Jain! ❤️</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 40px;">To the girl who has my whole heart...</p>
+        
+        <div class="btn-group">
+            <button class="square-card" onclick="showSection('gallery-section')">
+                <span class="icon">📸</span>
+                <span>Our Memories</span>
+            </button>
+            <button class="square-card" onclick="showSection('letter-section')">
+                <span class="icon">💌</span>
+                <span>My Love Letter</span>
+            </button>
+            <button class="square-card" onclick="showSection('feelings-section')">
+                <span class="icon">🥰</span>
+                <span>How I Felt</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="gallery-section" class="container hidden">
+        <h1>Our Beautiful Moments</h1>
+        <div class="gallery-grid">
+            <div class="photo-card">
+                <img src="firstday.jpeg" alt="First Day">
+                <div class="photo-caption">The Day We Met</div>
+            </div>
+            <div class="photo-card">
+                <img src="dinnerdate.jpeg" alt="Dinner Date">
+                <div class="photo-caption">Our Special Dinner</div>
+            </div>
+            <div class="photo-card">
+                <img src="funnyselfie.jpeg" alt="Funny Selfie">
+                <div class="photo-caption">Our Funny Faces 😜</div>
+            </div>
+        </div>
+        <button class="secondary-btn" onclick="showSection('home-section')">⬅ Back Home</button>
+    </div>
+
+    <div id="letter-section" class="container hidden letter-bg">
+        <h1>Dearest Vidhi...</h1>
+        <div class="parchment">
+            <div class="paper-content">
+                My Dearest Vidhi,<br><br>
+                I was sitting here trying to think of the perfect way to tell you how much I love you, but the truth is, it’s not just about the big "I love you" moments. It’s about everything in between.
+
+It’s the way my day immediately gets better the second I see a text from you. It’s our inside jokes that nobody else would ever understand, and the way you can make me laugh even when I’m having a rough day. Honestly, just knowing you’re in my corner makes me feel like I can handle anything.
+
+You aren't just my girlfriend; you’re my favorite person to talk to, my go-to for every piece of news, and the person I’m always most excited to see at the end of the day.
+
+Thank you for being exactly who you are. I don’t need a perfect life as long as I have you by my side.
+
+Happy Valentine’s Day, Vidhi. I’m so lucky I get to be the one who loves you.,<br>
+                Kavish
+            </div>
+        </div>
+        <button class="secondary-btn" onclick="showSection('home-section')">⬅ Back Home</button>
+    </div>
+
+    <div id="feelings-section" class="container hidden letter-bg">
+        <h1>Your Thoughts...</h1>
+        <div class="parchment">
+            <textarea id="vidhiResponse" class="vidhi-input" placeholder="Type how you felt about this gift here..."></textarea>
+        </div>
+        <button class="whatsapp-btn" onclick="sendResponse()">Send Your Thoughts to Him 📱</button>
+        <button class="secondary-btn" onclick="showSection('home-section')">⬅ Back Home</button>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function sendResponse() {
+            const response = document.getElementById('vidhiResponse').value;
+            if(!response) {
+                alert("Please type something first, Vidhi! 🥰");
+                return;
+            }
+            
+            // Your phone number in international format without the "+"
+            const phoneNumber = "919082019545"; 
+            const encodedText = encodeURIComponent("Hi! ❤️ Here's how I felt about your gift: \n\n" + response);
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+            
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(heart);
+            }
+        }
+        window.onload = createHearts;
+    </script>
+</body>
+</html>
